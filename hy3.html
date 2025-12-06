@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Хуєрима</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #000;
+      color: #ffe4ff;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+    }
+
+    .text-block {
+      margin-bottom: 24px;
+      font-size: 16px;
+      line-height: 1.35;
+      white-space: pre-line;
+      border: 2px solid #ff3ea5;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 20, 147, 0.07);
+      box-shadow: 0 0 14px #ff3ea555;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 14px;
+      border: 2px solid #ff3ea5;
+      background: #1a0013;
+      color: #ffe4ff;
+      outline: none;
+      resize: none;
+      margin-bottom: 14px;
+      box-shadow: 0 0 12px #ff3ea555;
+    }
+
+    textarea::placeholder {
+      color: #ffb8f4;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 14px;
+      border: none;
+      background: #ff3ea5;
+      color: #000;
+      cursor: pointer;
+      margin-bottom: 14px;
+      box-shadow: 0 0 16px #ff3ea5aa;
+      transition: 0.12s ease;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+
+    button:active {
+      transform: scale(0.96);
+      box-shadow: 0 0 8px #ff3ea5aa;
+    }
+
+    .result-field {
+      margin-top: 6px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #1a0013;
+      border: 2px solid #ff3ea5;
+      min-height: 80px;
+      font-size: 36px;  /* УДВІЧІ БІЛЬШИЙ ТЕКСТ */
+      font-weight: bold;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      box-shadow: 0 0 12px #ff3ea555;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 0.25s ease;
+    }
+
+    .result-field.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ПІКСЕЛЬНИЙ ПІСЮН: стовбур + голівка + 2 яєчка */
+    .penis {
+      position: absolute;
+      right: -160px;
+      top: 50%;
+      transform: translateY(-50%) scale(1.4);
+      display: grid;
+      grid-template-columns: repeat(9, 12px);
+      grid-auto-rows: 12px;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.45s ease-in;
+    }
+
+    .penis.visible {
+      opacity: 1;
+    }
+
+    .px { width: 12px; height: 12px; background: transparent; }
+    .p { background: #ff3ea5; }   /* стовбур */
+    .h { background: #ff8ed6; }   /* головка */
+    .b { background: #ff5fc7; }   /* яєчка */
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="text-block">
+Південний Інститут Хуєзнавства Вільної Академії. ПІХВА. Презентує 
+
+Універсальний перетворювач хуїв.
+
+
+Додаток присвячую моїй люблячій дружині Катерині.  
+В її 27-ий день народження.  
+Памʼятай, ти вже маєш поруч найкращий ХУЙ.
+    </div>
+
+    <textarea id="inputText" placeholder="Введи слово..."></textarea>
+
+    <button onclick="convert()">Перетворити</button>
+
+    <div id="outputText" class="result-field"></div>
+
+    <!-- Піксельний пісюн (9x10) -->
+    <div id="penis" class="penis">
+      <!-- Рядки 1–10 (пісюн з яйцями) -->
+      <!-- 0 -->
+      <div class="px"></div><div class="px"></div><div class="h"></div><div class="h"></div><div class="h"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+      <!-- 1 -->
+      <div class="px"></div><div class="px"></div><div class="h"></div><div class="h"></div><div class="h"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+      <!-- стовбур -->
+<div class="px"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="px"></div>
+      <div class="px"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="px"></div>
+      <div class="px"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="px"></div>
+      <div class="px"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="px"></div>
+
+      <!-- ЯЄЧКА -->
+      <div class="b"></div><div class="b"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="b"></div><div class="b"></div><div class="px"></div>
+      <div class="b"></div><div class="b"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="b"></div><div class="b"></div><div class="px"></div>
+    </div>
+
+  </div>
+
+  <script>
+    // Винятки — як ти затвердив
+    const SPECIAL_WORDS = {
+      "овоч": "хуйовоч",
+      "дрель": "хуєдрель",
+      "мандарин": "хуєндрин",
+      "скатерка": "хуєкатерка",
+      "міністр": "хуєністр",
+      "мандавошка": "хуєндавошка",
+      "хвіст": "хуіст",
+      "правда": "хуявда",
+      "перстень": "хуєстень",
+      "проблема": "хуєблема",
+      "місто": "хуісто",
+      "француз": "хуєнцуз",
+      "фарш": "хуярш",
+      "мило": "хуіло",
+      "березень": "хуєрезень",
+      "батіг": "хуєтіг",
+      "жолудь": "хуйолудь"
+    };
+
+    const VOWELS = "аеєиіїоуяю";
+
+    function matchCase(original, transformed) {
+      if (!original) return transformed;
+      const isUpper = original[0] === original[0].toUpperCase();
+      if (!isUpper) return transformed;
+      return transformed[0].toUpperCase() + transformed.slice(1);
+    }
+
+    function baseConvert(wordLower) {
+      let idx = [...wordLower].findIndex(ch => VOWELS.includes(ch));
+      if (idx === -1) return "ху" + wordLower;
+      const vowel = wordLower[idx];
+      const rest = wordLower.slice(idx + 1);
+
+      let suf =
+        vowel === "а" ? "я" :
+        vowel === "о" ? "йо" :
+        vowel === "у" ? "ю" :
+        "еє".includes(vowel) ? "є" :
+        "иії".includes(vowel) ? "і" :
+        vowel === "я" ? "я" :
+        vowel === "ю" ? "ю" :
+        "є";
+
+      return "ху" + suf + rest;
+    }
+
+    function convertWord(word) {
+      const original = word;
+      const lower = word.toLowerCase();
+
+      if (SPECIAL_WORDS[lower]) return matchCase(original, SPECIAL_WORDS[lower]);
+      return matchCase(original, baseConvert(lower));
+    }
+
+    function convert() {
+      const input = document.getElementById("inputText").value.trim();
+      const outputEl = document.getElementById("outputText");
+      const penis = document.getElementById("penis");
+
+      if (!input) {
+        outputEl.textContent = "";
+        outputEl.classList.remove("visible");
+        penis.classList.remove("visible");
+        return;
+      }
+
+      const result = input.split(/\s+/).map(convertWord).join(" ");
+
+      outputEl.textContent = result;
+      outputEl.classList.add("visible");
+
+      penis.classList.add("visible");
+    }
+  </script>
+
+</body>
+</html>
